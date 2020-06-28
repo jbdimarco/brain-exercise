@@ -35,7 +35,7 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate("SettingsScreen")}
       />
       <Button
-        title="Go to Video"
+        title="Watch Video"
         style={styles.button}
         onPress={() => navigation.navigate("Video")}
       />

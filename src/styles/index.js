@@ -6,4 +6,10 @@ function getStyles({ bool: isDark }) {
   };
 }
 
-export default getStyles;
+// Trying to simlify imports by making images
+const images = {
+  logo: "../../assets/logo.jpg",
+};
+
+export default { getStyles, images };
+// export default images;

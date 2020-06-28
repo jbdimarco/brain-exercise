@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 // Importing HomeScreens
 import HomeScreen from "./src/screens/Home/HomeScreen.jsx";
 import Video from "./src/screens/Home/Video.jsx";
+import LoadingScreen from "./src/screens/Home/LoadingScreen.jsx";
 // Importing SettingsScreens
 import SettingsScreen from "./src/screens/Settings/SettingsScreen.jsx";
 import TimePicker from "./src/screens/Settings/TimePicker.jsx";
@@ -23,6 +24,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="Video" component={Video} />
 
