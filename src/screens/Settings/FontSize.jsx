@@ -1,32 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native"; // StyleSheet
-// import SwitchToggle from "./Components/SwitchToggle.jsx";
+import { View, Text } from "react-native";
+import { Slider } from "react-native-elements";
 
-// const styles = StyleSheet.create({
-//   root: {
-//     flex: 1,
-//     backgroundColor: "#f5f5f5",
-//     paddingVertical: 30,
-//   },
-//   intermediate: {
-//     width: "100%",
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//     alignItems: "center",
-//     paddingHorizontal: 20,
-//     marginBottom: 130,
-//   },
-//   notificationText: {
-//     fontSize: 25,
-//   },
-// });
-
-function FontSize() {
+function FontSlider() {
   return (
-    <View>
-      <Text>Pick your font size!</Text>
+    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
+      <Slider
+        value={this.state.value}
+        onValueChange={(value) => this.setState({ value })}
+      />
+      <Text>Value: {this.state.value}</Text>
     </View>
   );
 }
 
-export default FontSize;
+export default FontSlider;
