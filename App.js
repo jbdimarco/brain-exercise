@@ -110,7 +110,7 @@ export default function App() {
           name="Pause"
           component={Pause}
           options={{
-            title: "Paused",
+            title: "Game Paused",
             animationTypeForReplace: "pop",
             // headerShown: false,
             headerStyle: {backgroundColor: '#3f3f3f'},
