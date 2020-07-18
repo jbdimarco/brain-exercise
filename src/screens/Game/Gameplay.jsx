@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import "react-native-gesture-handler";
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, AsyncStorage } from "react-native";
 import { Button } from "react-native-elements";
 import PropTypes from "prop-types";
 import getProblem from "../../scripts/game-logic";
@@ -55,6 +55,22 @@ const styles = StyleSheet.create({
 
 function Gameplay({ navigation }) {
   const [problem, setProblem] = useState(getProblem());
+  // const [remainingTime, setRemainingTime] = useState(300);
+  
+  const onPause = async () => {
+    try {
+      const gameState = {
+        problem,
+        // remainingTime,
+      };
+      await AsyncStorage.setItem("pauseGameState", JSON.stringify(gameState));
+    } catch (err) {
+      // error setting value
+      alert("error occurred")
+    }
+    navigation.navigate("Pause");
+  };
+
   const right = () => (
     <Button
       titleStyle={{
@@ -65,9 +81,22 @@ function Gameplay({ navigation }) {
         backgroundColor: 'transparent',
         marginRight: 10,
       }}
-      onPress={() => navigation.navigate("Pause")} title="Pause"
+      onPress={ () => onPause() } title="Pause"
     />
   )
+
+  // const onResume = async () => {
+  //   try {
+  //     let gameState = await AsyncStorage.getItem("pauseGameState");
+  //     gameState = JSON.parse(gameState);
+  //     if (gameState !== null) {
+  //       setRemainingTime(gameState.remainingTime);
+  //       setProblem(gameState.problem);
+  //     }
+  //   } catch (err) {
+  //     // error reading value
+  //   }
+  // };
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
