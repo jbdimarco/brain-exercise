@@ -81,67 +81,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   }
 });
-
-// {/* <View style={styles.root}>
-//        <Text style={styles.text}>Notifications</Text>
-//        <View style={styles.reminder}>
-//         <Text style={styles.subtext}>Daily Reminder</Text>
-//         <Switch
-//           trackColor={{ false: "#ffffff", true: "#2a652c" }}
-//           onValueChange={toggleSwitch}
-//           value={toggleOn}
-//           accessibilityRole="switch"
-//         />
-//       </View>
-//       {
-//         toggleOn &&
-//           <View style={styles.reminder}>
-//             <Text style={styles.subtext}>Set Reminder Time</Text>
-//             <Button
-//               title={getDate()}
-//               type="outline"
-//               buttonStyle={styles.timeButton}
-//               onPress={() => navigation.navigate("TimePicker", settings)}
-//             />
-//           </View>
-//       }
-//       {/* <Button
-//         title="Font Size                                                 >"
-//         buttonStyle={styles.fontButton}
-//         titleStyle={{
-//           fontSize: 20,
-//           fontWeight: "bold",
-//           color: "black",
-//         }}
-//         type="clear"
-//         containerStyle={{ margin: 20 }}
-//         onPress={() => navigation.navigate("FontSize", settings)}
-//       /> */}
-//       <TouchableOpacity 
-//         style={styles.fontSizeNavigator}
-//         onPress={() => navigation.navigate("FontSize", settings)}
-//         >
-//         <Text>Font Size</Text>
-//         <Text>{">"}</Text>
-//       </TouchableOpacity>
-//       <TouchableOpacity 
-//         style={styles.fontSizeNavigator}
-//         onPress={() => navigation.navigate("SoundScreen", settings)}
-//         >
-//         <Text>Sounds</Text>
-//         <Text>{">"}</Text>
-//       </TouchableOpacity>
-//       <View style={styles.animation}>
-//         <Text style={{marginHorizontal: 0, fontSize: 20, fontWeight: "bold"}}>Animation</Text>
-//         <Switch
-//           trackColor={{ false: "#ffffff", true: "#2a652c" }}
-//           onValueChange={() => toggleAnimations()}
-//           value={animationToggleOn}
-//           accessibilityRole="switch"
-//         />
-//       </View>
-//     </View> */}
-
 // Settings Navigation
 function SettingsScreen({ navigation }) {
   const [settings, setSettings] = useState(defaultSettings);

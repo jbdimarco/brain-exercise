@@ -1,10 +1,15 @@
 import React from "react";
 import { Button as BaseButton } from "react-native-elements";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import musicFunction from "../scripts/musicFunction"
 
 const Button = (props) => {
     return (
     <BaseButton {...props}
+        onPress={() => {
+            musicFunction();
+            props.onPress();
+        }}
         buttonStyle={{
             alignSelf: "center",
             marginVertical: 10,
@@ -20,6 +25,7 @@ const Button = (props) => {
 Button.propTypes = {
     children: PropTypes.string,
     buttonStyle: PropTypes.object,
+    onPress: PropTypes.func,
 };
 
 export default Button;
