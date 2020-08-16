@@ -47,6 +47,8 @@ const musicFunction = () => {
     pullSettings().then((setting) => {
         if (setting.soundEffectsOn) {
             playSound()
+        } else {
+            console.log("Make sure the settings is turned on")
         }
     });
 }  
