@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+simport React, { useState } from "react";
 import { View, StyleSheet, Switch, Animated } from "react-native";
 import { Button } from "react-native-elements";
 import AsyncStorage from "@react-native-community/async-storage";

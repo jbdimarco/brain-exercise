@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     alignContent: "center",
-    marginVertical: 30,
-    marginHorizontal: 30,
+    padding: 30,
+    backgroundColor: "white"
   },
   text: {
     fontSize: 20,
@@ -35,7 +35,7 @@ function FinishedScreen({ navigation }) {
       <Button
         title="Extra Practice"
         buttonStyle={styles.button}
-        onPress={() => navigation.navigate("ExtraPractice")}
+        onPress={() => navigation.navigate("GameMaterials")}
       />
     </View>
   );

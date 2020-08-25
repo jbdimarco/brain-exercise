@@ -1,14 +1,16 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-// Importing Home and VideoPopup Screens
+
+// Importing Home Screen
 import HomeScreen from "./src/screens/Home/HomeScreen.jsx";
-import Video from "./src/screens/Home/Video.jsx";
+
 // Importing Settings Screens
 import SettingsScreen from "./src/screens/Settings/SettingsScreen.jsx";
 import TimePicker from "./src/screens/Settings/TimePicker.jsx";
 import FontSize from "./src/screens/Settings/FontSize.jsx";
 import SoundScreen from "./src/screens/Settings/SoundScreen.jsx";
+
 // Importing Game Screens
 import GameOverview from "./src/screens/Game/GameOverview.jsx";
 import GameMaterials from "./src/screens/Game/GameMaterials.jsx";
@@ -22,7 +24,14 @@ import ExtraPractice from "./src/screens/Game/ExtraPractice.jsx";
 import ReadingMain from "./src/screens/Game/ReadingMain.jsx";
 import ExercisesCompleted from "./src/screens/Game/ExercisesCompleted.jsx";
 import PromptScreen from "./src/screens/Game/PromptScreen.jsx";
+<<<<<<< HEAD
 import { Audio } from "expo-av";
+=======
+import WritingIntro from "./src/screens/Game/WritingIntro.jsx";
+import MathIntro from "./src/screens/Game/MathIntro.jsx";
+import TriviaIntro from "./src/screens/Game/TriviaIntro.jsx";
+
+>>>>>>> dddfca35bd342cb119d8ed8d458187210c58fba7
 const config = {
   animation: "spring",
   config: {
@@ -41,6 +50,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
+<<<<<<< HEAD
         // Consistent styling across all stacked screens
         screenOptions={{
           headerBackTitleVisible: false,
@@ -55,11 +65,27 @@ export default function App() {
           },
         }}
       >
+=======
+      // Consistent styling across all stacked screens
+      screenOptions={{
+        headerBackTitleVisible: false,
+        headerTitleAllowFontScaling: true,
+        headerTintColor: 'black',
+        headerStyle: {
+          backgroundColor: 'white',
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          color: 'black',
+        },
+      }}>
+>>>>>>> dddfca35bd342cb119d8ed8d458187210c58fba7
         {/* Home Screens */}
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{ title: "1 of 5 Days" }}
+<<<<<<< HEAD
         />
         <Stack.Screen
           name="Video"
@@ -67,6 +93,8 @@ export default function App() {
           options={{
             title: "Youtube Videos",
           }}
+=======
+>>>>>>> dddfca35bd342cb119d8ed8d458187210c58fba7
         />
 
         {/* Game Screens */}
@@ -102,7 +130,11 @@ export default function App() {
           name="TriviaScreen"
           component={TriviaScreen}
           options={{
+<<<<<<< HEAD
             title: "Trivia",
+=======
+            title: "Writing (Trivia)",
+>>>>>>> dddfca35bd342cb119d8ed8d458187210c58fba7
           }}
         />
         <Stack.Screen
@@ -111,6 +143,30 @@ export default function App() {
           options={{
             title: "Exercises Completed",
           }}
+<<<<<<< HEAD
+=======
+        />
+        <Stack.Screen
+          name="WritingIntro"
+          component={WritingIntro}
+          options={{
+            title: "Writing",
+          }}
+        />
+        <Stack.Screen
+          name="MathIntro"
+          component={MathIntro}
+          options={{
+            title: "Math",
+          }}
+        />
+        <Stack.Screen
+          name="TriviaIntro"
+          component={TriviaIntro}
+          options={{
+            title: "Writing (Trivia)",
+          }}
+>>>>>>> dddfca35bd342cb119d8ed8d458187210c58fba7
         />
         <Stack.Screen
           name="ExtraPractice"
@@ -139,6 +195,10 @@ export default function App() {
           options={{
             title: "Writing Prompts",
           }}
+<<<<<<< HEAD
+=======
+
+>>>>>>> dddfca35bd342cb119d8ed8d458187210c58fba7
         />
         <Stack.Screen
           name="ExercisesCompleted"
@@ -154,7 +214,6 @@ export default function App() {
           options={{
             title: "Paused",
             animationTypeForReplace: "pop",
-            // headerShown: false,
             transitionSpec: {
               open: config,
               close: config,
@@ -195,9 +254,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// options={{
-//   headerRight: (
-//     <PauseButton onPress={() => console.log("Stop timer")} />
-//   ),
-// }}

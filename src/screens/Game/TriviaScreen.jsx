@@ -9,7 +9,10 @@ import Button from "../../components/Button";
 
 const styles = StyleSheet.create({
   root: {
-    flex: .8,
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 25,
+    backgroundColor: "white"
   },
   instructionText: {
     fontSize: 32,
@@ -34,7 +37,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flexWrap: "wrap",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
+    paddingTop: 30,
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 30,
@@ -51,46 +55,68 @@ const styles = StyleSheet.create({
   },
   buttonTitle: {
     fontSize: 20,
-    fontWeight: "100",
+    fontWeight: "bold",
     textAlign: "center",
     color: "white",
   },
 });
+const totalTime = 300;
 
-function TriviaScreen( {navigation} ) {
+function TriviaScreen({ navigation }) {
   const [problem, setProblem] = useState(getProblem());
-  const [answered, setAnswered] = useState(false)
-  const [finished, setFinished] = useState(false)
+  const [answered, setAnswered] = useState(false);
+  const [finished, setFinished] = useState(false);
 
   function getNewProblem() {
     setProblem(getProblem());
-    setAnswered(false)
+    setAnswered(false);
   }
 
   return (
     <View style={styles.root}>
-      <ProgressBar seconds = {300} red = {60} func = {() => {setFinished(true)}} shouldNotRender/>
+      <ProgressBar
+        seconds={totalTime}
+        red={60}
+        func={() => {
+          setFinished(true);
+        }}
+        shouldNotRender
+      />
       <View style={styles.textContainer}>
-        <Text style={styles.instructionText}>Write down both the question and answer to: </Text>
-        <Text style = {styles.questionText}>{problem.question}</Text>
+        <Text style={styles.instructionText}>
+          Write down both the question and answer to:{" "}
+        </Text>
+        <Text style={styles.questionText}>{problem.question}</Text>
         <View>
           <Text style={styles.answerText}>{answered ? "Answer:" : ""}</Text>
-          <Text style={styles.actualAnswerText}>{answered ? problem.answer : ""}</Text>
+          <Text style={styles.actualAnswerText}>
+            {answered ? problem.answer : ""}
+          </Text>
         </View>
       </View>
       <View>
         <Button
           // eslint-disable-next-line no-nested-ternary
-          title={finished ? "Finish Writing Section" : (answered ? "Next" : "Show Answer")}
+          title={
+            finished
+              ? "Finish Writing Section"
+              : answered
+              ? "Next"
+              : "Show Answer"
+          }
+          titleStyle={styles.buttonTitle}
+          buttonStyle={styles.button}
           onPress={() => {
             if (!finished) {
               if (!answered) {
-                setAnswered(true)
+                setAnswered(true);
               } else {
-                getNewProblem()
+                getNewProblem();
               }
             } else {
-              navigation.navigate("FinishedScreen")
+              navigation.navigate("MathIntro", {
+                nextScreen: "WritingIntro",
+              });
             }
           }}
         />

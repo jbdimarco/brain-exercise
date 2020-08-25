@@ -35,15 +35,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignContent: "center",
     paddingVertical: 20,
+    backgroundColor: "white"
   },
   reminder: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     marginHorizontal: 30,
   },
   reminderContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     marginHorizontal: 30,
     marginVertical: 15,
   },
@@ -55,6 +58,7 @@ const styles = StyleSheet.create({
   },
   subtext: {
     fontSize: 16,
+    fontWeight: "bold",
     textAlign: "left",
     alignSelf: "center",
     marginVertical: 15,
@@ -62,6 +66,7 @@ const styles = StyleSheet.create({
   animation: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     marginHorizontal: 30,
     marginVertical: 15,
   },
@@ -91,7 +96,12 @@ function SettingsScreen({ navigation }) {
   useFocusEffect(
     React.useCallback(() => {
       // Do something when the screen is focused
-      pullSettings().then((item) => setSettings(item));
+      pullSettings()
+      .then((item) => {
+        setSettings(item)
+        setToggleOn(item.notificationsActive)
+        setAnimationToggleOn(item.animationOn)
+      });
     }, [])
   );
 
@@ -105,12 +115,12 @@ function SettingsScreen({ navigation }) {
 
   const toggleSwitch = () => {
     if (toggleOn) {
-      // going from enabled to unenabled
+      // going from enabled to disabled
       Notifications.cancelAllScheduledNotificationsAsync();
       setToggleOn(false);
       settings.notificationsActive = false;
     } else {
-      // going from unenabled to enabled
+      // going from disabled to enabled
       setToggleOn(true);
       settings.notificationsActive = true;
     }
@@ -119,9 +129,9 @@ function SettingsScreen({ navigation }) {
 
   const toggleAnimations = () => {
     if (animationToggleOn) {
-      // going from enabled to unenabled
-      setAnimationToggleOn(false);
-      settings.animationOn = false;
+      // going from enabled to disabled
+      setAnimationToggleOn(false)
+      settings.animationOn = false
     } else {
       setAnimationToggleOn(true);
       settings.animationOn = true;
@@ -158,24 +168,22 @@ function SettingsScreen({ navigation }) {
         <TouchableOpacity
           style={styles.fontSizeNavigator}
           onPress={() => navigation.navigate("FontSize", settings)}
-        >
-          <Text>Font Size</Text>
-          <Text>{">"}</Text>
+          >
+          <Text style={styles.subtext}>Font Size</Text>
+          <Text style={styles.subtext}>{">"}</Text>
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity
-          style={styles.fontSizeNavigator}
-          onPress={() => navigation.navigate("SoundScreen", settings)}
+      <TouchableOpacity
+        style={styles.fontSizeNavigator}
+        onPress={() => navigation.navigate("SoundScreen", settings)}
         >
-          <Text>Sounds</Text>
-          <Text>{">"}</Text>
-        </TouchableOpacity>
+        <Text style={styles.subtext}>Sounds</Text>
+        <Text style={styles.subtext}>{">"}</Text>
+      </TouchableOpacity>
       </View>
       <View style={styles.animation}>
-        <Text style={{ marginHorizontal: 0, fontSize: 15, fontWeight: "bold" }}>
-          Animation
-        </Text>
+        <Text style={styles.subtext}>Animation</Text>
         <Switch
           trackColor={{ false: "#ffffff", true: "#2a652c" }}
           onValueChange={() => toggleAnimations()}

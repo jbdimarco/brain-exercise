@@ -7,12 +7,12 @@ import "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
   root: {
-    flex: .9,
+    flex: 1,
     alignContent: "center",
     justifyContent: "space-between",
-    marginBottom: 30,
-    marginTop: 100,
-    marginHorizontal: 30,
+    padding: 30,
+    paddingTop: 100,
+    backgroundColor: "white"
   },
   text: {
     fontSize: 20,
@@ -27,8 +27,10 @@ function GameOverview({ navigation }) {
     <View style={styles.root}>
       <Text style={styles.text}>You will be completing a mixture of Math, Reading, and Writing exercises.</Text>
       <Button
-        title="Game Materials" // change back to game materials
-        onPress={() => navigation.navigate("GameMaterials")}
+        title="Begin"
+        onPress={() =>
+          navigation.navigate("MathIntro", { nextScreen: "TriviaIntro" })
+        }
       />
     </View>
   );
