@@ -30,12 +30,20 @@ const playSound = async () => {
 };
 
 const musicFunction = () => {
-  pullSettings().then((setting) => {
-    if (setting.soundEffectsOn) {
-      playSound();
-    } else {
-      console.log("Make sure the settings is turned on");
-    }
+  return new Promise((resolve, reject) => {
+    pullSettings().then((setting) => {
+      if (setting.soundEffectsOn) {
+        const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        playSound();
+        wait()
+          .then(() => resolve())
+          .catch((error) => console.log("musicFunction play", error));
+      } else {
+        console.log("Make sure the settings is turned on");
+        resolve();
+      }
+    });
   });
 };
 

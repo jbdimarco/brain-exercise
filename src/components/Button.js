@@ -8,8 +8,7 @@ const Button = (props) => {
     <BaseButton
       {...props}
       onPress={() => {
-        musicFunction();
-        props.onPress();
+        musicFunction().then(props.onPress());
       }}
       buttonStyle={{
         alignSelf: "center",
