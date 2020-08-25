@@ -39,10 +39,7 @@
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
     "react-native-step-indicator": "^1.0.3",
-<<<<<<< HEAD
-=======
     "react-native-vector-icons": "^7.0.0",
->>>>>>> dddfca35bd342cb119d8ed8d458187210c58fba7
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
